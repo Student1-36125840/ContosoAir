@@ -1,14 +1,12 @@
    pool:
-     vmImage: 'ubuntu-18.04'
+     name: default
    trigger:
      - master
    steps:
-     - task: CopyFiles@2
+     - task : NodeTool@0
        displayName: 'Copy Files to: $(build.artifactstagingdirectory)/Templates'
        inputs:
-         SourceFolder: deployment
-         Contents: '*.json'
-         TargetFolder: '$(build.artifactstagingdirectory)/Templates'
+         versionSpec: '14.x'
      - task: Npm@1
        displayName: 'npm custom'
        inputs:
